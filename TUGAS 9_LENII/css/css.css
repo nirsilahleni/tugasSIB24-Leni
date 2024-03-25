@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+}
+
+.container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-content {
+    overflow: hidden;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    height: 500px;
+    position: relative;
+}
+
+.img {
+    text-align: center;
+}
+
+.img img {
+    width: 80px;
+    height: 80px;
+    margin-top: -40px;
+}
+
+.login-content .title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-top: 30px;
+    color: #333;
+    text-align: center;
+}
+
+.login-content form {
+    padding: 80px 40px;
+}
+
+.login-content form img {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: -30px;
+    left: calc(50% - 30px);
+}
+
+.login-content form .input-div {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.login-content form .input-div.one {
+    margin-top: 0;
+}
+
+.login-content form .input-div.pass {
+    margin-bottom: 0;
+}
+
+.login-content form .input-div .i {
+    position: absolute;
+    width: 40px;
+    top: 10px;
+    left: 10px;
+    pointer-events: none;
+}
+
+.login-content form .input-div .i i {
+    color: #ccc;
+}
+
+.login-content form .input-div .div {
+    position: relative;
+    height: 40px;
+}
+
+.login-content form .input-div .div h5 {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+}
+
+.login-content form .input-div .div input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    background: none;
+    padding: 0.5rem 0.8rem;
+    font-size: 18px;
+    color: #333;
+}
+
+.login-content form .input-div .div input:focus + h5 {
+    transform: translateY(-120%);
+    font-size: 14px;
+    color: #71b7e6;
+}
+
+.login-content form .input-div .div input:focus {
+    border-bottom: 2px solid #71b7e6;
+}
+
+.login-content form a {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.login-content form .btn {
+    width: 100%;
+    background: #71b7e6;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 18px;
+    color: #fff;
+    outline: none;
+    transition: background 0.3s ease;
+}
+
+.login-content form .btn:hover {
+    background: #568db2;
+}
+
+.wave {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+}
+
+@media screen and (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+    .login-content {
+        width: 300px;
+        height: 480px;
+    }
+    .login-content form img {
+        width: 50px;
+        height: 50px;
+    }
+    .login-content .title {
+        font-size: 20px;
+    }
+    .login-content form .input-div .div h5 {
+        font-size: 16px;
+    }
+    .login-content form .btn {
+        font-size: 16px;
+    }
+}
