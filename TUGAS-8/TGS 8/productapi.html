@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Unicorns</title>
+    <link rel="stylesheet" href="coba.css" />
+  </head>
+  <body>
+    <h1>FIMLYS</h1>
+    <div id="unicornData"></div>
+    <div>
+      <input
+        type="text"
+        id="unicornIdInput"
+        placeholder="Masukkan ID Unicorn"
+      />
+      <button id="deleteUnicornButton">Hapus Data</button>
+    </div>
+    <button id="addUnicornButton">Tambah Data</button>
+    <br /><br />
+
+    <script>
+      // Fungsi untuk menambahkan data
+      function addUnicorn() {
+        const newUnicorn = {
+          name: "FYGA",
+          univ: "stmik bandung",
+          colour: "abu-abu",
+          image: "fyga.jpeg", // Ganti dengan path file lokal yang benar
+        };
+
+        fetch(
+          "https://crudcrud.com/api/798c1236b5964d09aa0251b8988c3b2a/unicorns",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newUnicorn),
+          }
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Data baru telah ditambahkan:", data);
+            // Setelah menambahkan data, muat ulang halaman untuk menampilkan data yang telah diperbarui
+            window.location.reload();
+          })
+          .catch((error) => {
+            console.error("Terjadi kesalahan:", error);
+          });
+      }
+
+      // Fungsi untuk menghapus data
+      function deleteUnicorn() {
+        const unicornId = document.getElementById("unicornIdInput").value;
+
+        fetch(
+          `https://crudcrud.com/api/798c1236b5964d09aa0251b8988c3b2a/unicorns/${unicornId}`,
+          {
+            method: "DELETE",
+          }
+        )
+          .then((response) => {
+            if (response.ok) {
+              console.log("Data dengan ID", unicornId, "telah dihapus");
+              // Setelah menghapus data, muat ulang halaman untuk menampilkan data yang telah diperbarui
+              window.location.reload();
+            } else {
+              console.error("Gagal menghapus data");
+            }
+          })
+          .catch((error) => {
+            console.error("Terjadi kesalahan:", error);
+          });
+      }
+
+      // Event listener untuk tombol "Tambah Data"
+      document
+        .getElementById("addUnicornButton")
+        .addEventListener("click", addUnicorn);
+
+      // Event listener untuk tombol "Hapus Data"
+      document
+        .getElementById("deleteUnicornButton")
+        .addEventListener("click", deleteUnicorn);
+
+      // Ambil data saat halaman dimuat
+      fetch(
+        "https://crudcrud.com/api/798c1236b5964d09aa0251b8988c3b2a/unicorns/"
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          // Proses data yang diterima
+          let unicornDataElement = document.getElementById("unicornData");
+          // Buat wadah untuk produk
+          let productsContainer = document.createElement("div");
+          productsContainer.id = "productsContainer";
+          // Iterasi melalui setiap item data dan tambahkan ke dalam wadah produk
+          data.forEach((unicorn) => {
+            let productDiv = document.createElement("div");
+            productDiv.classList.add("product");
+            productDiv.innerHTML = `
+                        <div>Name: ${unicorn.name}</div>
+                        <div>univ: ${unicorn.univ}</div>
+                        <div>Colour: ${unicorn.colour}</div>
+                        <div><img src="${unicorn.image}" alt="Unicorn Image"></div>
+                    `;
+            productsContainer.appendChild(productDiv);
+          });
+          // Tambahkan wadah produk ke dalam elemen HTML
+          unicornDataElement.appendChild(productsContainer);
+        })
+        .catch((error) => {
+          console.error("Terjadi kesalahan:", error);
+        });
+    </script>
+  </body>
+</html>
