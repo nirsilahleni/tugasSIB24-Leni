@@ -1,0 +1,25 @@
+/* Gaya untuk produk */
+#productsContainer {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .product {
+    width: 300px;
+    margin: 10px;
+    border: 4px solid #ccc;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 40px;
+  }
+
+  .product img {
+    width: 100%; /* Memastikan gambar mengisi lebar kontainer */
+    height: 200px; /* Atur tinggi gambar sesuai kebutuhan */
+    object-fit: cover; /* Memastikan gambar dipotong dan diisi sepenuhnya */
+    border-radius: 20px; /* Membuat sudut gambar menjadi lebih bulat */
+  }
+
+  .product > div {
+    margin-bottom: 5px;
+  }
